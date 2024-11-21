@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datei-Upload und Bearbeitung</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="upload-container">
+            <h2>Dateien hochladen und bearbeiten</h2>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" id="file-input" multiple>
+                <button type="submit">Hochladen</button>
+            </form>
+            <div id="file-list">
+                {% for file in files %}
+                    <div class="file-item">
+                        <a href="{{ url_for('uploaded_file', filename=file) }}" target="_blank">{{ file }}</a>
+                        <form action="{{ url_for('delete_file', filename=file) }}" method="post" style="display:inline;">
+                            <button type="submit">Löschen</button>
+                        </form>
+                    </div>
+                {% endfor %}
+            </div>
+            <a href="/logout">Logout</a>
+        </div>
+        <footer>
+            <p>Designed by Julian Franke</p>
+        </footer>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

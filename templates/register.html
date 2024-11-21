@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrieren</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="register-container">
+            <h2>Registrieren</h2>
+            <form id="register-form" action="/register" method="post">
+                <input type="email" id="register-email" name="email" placeholder="E-Mail" required>
+                <input type="password" id="register-password" name="password" placeholder="Passwort" required>
+                <button type="submit">Registrieren</button>
+            </form>
+            <button onclick="window.location.href='/login'">Zum Login</button>
+        </div>
+        <footer>
+            <p>Designed by Julian Franke</p>
+        </footer>
+    </div>
+</body>
+</html>
